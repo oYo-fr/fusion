@@ -7,6 +7,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SecurityContext } from '@angular/core';
 import { MarkdownModule } from 'ngx-markdown';
+import { FormsModule } from "@angular/forms";
+import { MonacoEditorModule } from 'ngx-monaco-editor';
 
 @NgModule({
   declarations: [
@@ -19,7 +21,9 @@ import { MarkdownModule } from 'ngx-markdown';
     BrowserAnimationsModule,
     MarkdownModule.forRoot({
       sanitize: SecurityContext.NONE
-    })
+    }),
+    FormsModule,
+    MonacoEditorModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

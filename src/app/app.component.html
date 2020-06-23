@@ -1,2 +1,5 @@
-<markdown emoji>{{ result }}</markdown>
+<div style="height: 500px; width: 600px;">
+  <ngx-monaco-editor [options]="editorOptions" [(ngModel)]="mustache" style="height: 100%"></ngx-monaco-editor>
+</div>
+<markdown emoji [data]="result"></markdown>
 <router-outlet></router-outlet>
