@@ -9,6 +9,9 @@ import { SecurityContext } from '@angular/core';
 import { MarkdownModule } from 'ngx-markdown';
 import { FormsModule } from "@angular/forms";
 import { MonacoEditorModule } from 'ngx-monaco-editor';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatCardModule } from '@angular/material/card';
+import { MatExpansionModule } from '@angular/material/expansion';
 
 @NgModule({
   declarations: [
@@ -18,6 +21,9 @@ import { MonacoEditorModule } from 'ngx-monaco-editor';
     BrowserModule,
     AppRoutingModule,
     MatButtonModule,
+    MatGridListModule,
+    MatCardModule,
+    MatExpansionModule,
     BrowserAnimationsModule,
     MarkdownModule.forRoot({
       sanitize: SecurityContext.NONE

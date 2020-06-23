@@ -1,5 +1,31 @@
-<div style="height: 500px; width: 600px;">
-  <ngx-monaco-editor [options]="editorOptions" [(ngModel)]="mustache" style="height: 100%"></ngx-monaco-editor>
-</div>
-<markdown emoji [data]="result"></markdown>
+<mat-grid-list cols="2" style="width: 100%;">
+  <mat-grid-tile>
+    <mat-card class="configuration-card">
+      <mat-card-header>
+        <mat-card-title>Configuration</mat-card-title>
+      </mat-card-header>
+      <mat-accordion>
+        <mat-expansion-panel expanded="true">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Transform
+            </mat-panel-title>
+            <mat-panel-description>
+              Edit your transformation template
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+          <div style="height: 500px; width: 100%;">
+            <ngx-monaco-editor [options]="editorOptions" [(ngModel)]="mustache" style="height: 100%; width: 100%;">
+            </ngx-monaco-editor>
+          </div>
+        </mat-expansion-panel>
+      </mat-accordion>
+    </mat-card>
+  </mat-grid-tile>
+  <mat-grid-tile>
+    <markdown emoji [data]="result" style="width: 100%; "></markdown>
+  </mat-grid-tile>
+</mat-grid-list>
+
+
 <router-outlet></router-outlet>
