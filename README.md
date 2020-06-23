@@ -2,13 +2,12 @@
 
 This project contains starter template for your next VSCode extension based on `Angular` framework.
 
-<div align="center">
-<img src="https://raw.githubusercontent.com/4gray/vscode-webview-angular/master/screenshot.png" width="" alt="Screenshot" title="VSCode Webview Angular" />
-</div>
-
 Project was inspired by:
 * [vscode-webview-react](https://github.com/rebornix/vscode-webview-react)
 * [VSCode Webview API](https://code.visualstudio.com/api/extension-guides/webview)
+
+Forked from :
+* [vscode-webview-angular](https://github.com/4gray/vscode-webview-angular)
 
 ## Development
 

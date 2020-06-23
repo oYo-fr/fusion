@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "vscode-webview-angular": {
+    "vscode-fusion": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -61,18 +61,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "vscode-webview-angular:build"
+            "browserTarget": "vscode-fusion:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "vscode-webview-angular:build:production"
+              "browserTarget": "vscode-fusion:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "vscode-webview-angular:build"
+            "browserTarget": "vscode-fusion:build"
           }
         },
         "test": {
@@ -102,16 +102,16 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "vscode-webview-angular:serve"
+            "devServerTarget": "vscode-fusion:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "vscode-webview-angular:serve:production"
+              "devServerTarget": "vscode-fusion:serve:production"
             }
           }
         }
       }
     }
   },
-  "defaultProject": "vscode-webview-angular"
+  "defaultProject": "vscode-fusion"
 }

@@ -36,7 +36,7 @@ class WebPanel {
     this.builtAppFolder = 'dist';
 
     // Create and show a new webview panel
-    this.panel = vscode.window.createWebviewPanel(WebPanel.viewType, 'My Angular Webview', column, {
+    this.panel = vscode.window.createWebviewPanel(WebPanel.viewType, 'Fusion', column, {
       // Enable javascript in the webview
       enableScripts: true,
 
@@ -109,7 +109,7 @@ class WebPanel {
  */
 export function activate(context: vscode.ExtensionContext) {
   context.subscriptions.push(
-    vscode.commands.registerCommand('angular-webview.start', () => {
+    vscode.commands.registerCommand('fusion.start', () => {
       WebPanel.createOrShow(context.extensionPath);
     })
   );
