@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import * as Handlebars from 'handlebars/dist/handlebars';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,13 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  markdown = "# I ❤️ ngx-markdown\n## Crazy";
+  mustache = "# I ❤️ ngx-markdown\n## Crazy\n{{name}}";
+  result = "";
+  data = {
+    name: "Fusion"
+  }
+
+  public constructor(){
+    this.result = Handlebars.compile(this.mustache)(this.data);
+  }
 }
