@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'VSCode Webview Angular';
+  markdown = "# I ❤️ ngx-markdown\n## Crazy";
 }
