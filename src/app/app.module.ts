@@ -12,10 +12,19 @@ import { MonacoEditorModule } from 'ngx-monaco-editor';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatCardModule } from '@angular/material/card';
 import { MatExpansionModule } from '@angular/material/expansion';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { OptionsComponent } from './options/options.component';
+import { TemplateComponent } from './template/template.component';
+import { DataComponent } from './data/data.component';
+import { OutputComponent } from './output/output.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    OptionsComponent,
+    TemplateComponent,
+    DataComponent,
+    OutputComponent
   ],
   imports: [
     BrowserModule,
@@ -24,6 +33,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
     MatGridListModule,
     MatCardModule,
     MatExpansionModule,
+    MatSidenavModule,
     BrowserAnimationsModule,
     MarkdownModule.forRoot({
       sanitize: SecurityContext.NONE

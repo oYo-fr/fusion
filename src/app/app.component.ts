@@ -7,23 +7,79 @@ import * as Handlebars from 'handlebars/dist/handlebars';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  private _mustache: string = "# I ❤️ ngx-markdown\n## Crazy\n{{name}}";
-  get mustache(): string {
-    return this._mustache;
+  private _template: string = "# I ❤️ ngx-markdown\n## Crazy\n{{name}}";
+  get template(): string {
+    return this._template;
   }
-  set mustache(value: string) {
-    this._mustache = value;
-    this.result = Handlebars.compile(this._mustache)(this.data);
+  set template(value: string) {
+    this._template = value;
+    this.refresh();
   }
 
-  data = {
-    name: "Fusion"
+  private _src: string = "{ \"name\": \"Fusion\" }";
+  get src(): any {
+    return this._src;
   }
-  result = Handlebars.compile(this._mustache)(this.data);
+  set src(value: any) {
+    this._src = value;
+    this.refresh();
+  }
+
+  private _data: any;
+
+  public onData(value: any){
+    this._data = value;
+    this.refresh();
+  }
+
+  private _selector: string = "return data;";
+  private _selectorFunction = new Function('data', this._selector);
+
+  get selector(): string {
+    return this._selector;
+  }
+  set selector(value: string) {
+    this._selector = value;
+    this._selectorFunction = new Function('data', this._selector);
+    this.refresh();
+  }
+
+  private runSelector(data){
+    try{
+      return this._selectorFunction(data);
+    }catch(ex){
+      console.log(ex);
+      return data;
+    }
+  }
+
+  step = 0;
+
+  public setStep(index: number) {
+    this.step = index;
+  }
+
+  public nextStep() {
+    this.step++;
+  }
+
+  public prevStep() {
+    this.step--;
+  }
+
+  output = Handlebars.compile(this._template)(this._data);
   editorOptions = { theme: 'vs-dark', language: 'csharp' };
 
   public constructor() {
-    this.result = Handlebars.compile(this._mustache)(this.data);
+    this.refresh();
+  }
+
+  refresh(){
+    try{
+      this.output = Handlebars.compile(this._template)(this.runSelector(this._data));
+    }catch(ex){
+      console.log(ex);
+    }
   }
 
   onKey(event: any) { // without type info

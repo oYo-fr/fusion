@@ -1,31 +1,65 @@
-<mat-grid-list cols="2" style="width: 100%;">
-  <mat-grid-tile>
-    <mat-card class="configuration-card">
-      <mat-card-header>
-        <mat-card-title>Configuration</mat-card-title>
-      </mat-card-header>
-      <mat-accordion>
-        <mat-expansion-panel expanded="true">
-          <mat-expansion-panel-header>
-            <mat-panel-title>
-              Transform
-            </mat-panel-title>
-            <mat-panel-description>
-              Edit your transformation template
-            </mat-panel-description>
-          </mat-expansion-panel-header>
-          <div style="height: 500px; width: 100%;">
-            <ngx-monaco-editor [options]="editorOptions" [(ngModel)]="mustache" style="height: 100%; width: 100%;">
-            </ngx-monaco-editor>
-          </div>
-        </mat-expansion-panel>
-      </mat-accordion>
-    </mat-card>
-  </mat-grid-tile>
-  <mat-grid-tile>
-    <markdown emoji [data]="result" style="width: 100%; "></markdown>
-  </mat-grid-tile>
-</mat-grid-list>
+<mat-drawer-container autosize style="position: absolute;right: 0px;left: 0px;bottom: 0px;top: 0px;">
+  <mat-drawer #drawer mode="side" opened style="height: 100%; width: 50%;">
+    <mat-accordion style="height: 100%; width: 100%;">
+      <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Data
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <app-data [src]="src" (data)="onData($event)"></app-data>
+        <mat-action-row>
+          <button mat-button color="primary" (click)="nextStep()">Next</button>
+        </mat-action-row>
+      </mat-expansion-panel>
+      <mat-expansion-panel [expanded]="step === 1" (opened)="setStep(1)">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Enrich / Transform / Filter...
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <div style="height: 500px; width: 100%;">
+          <ngx-monaco-editor [options]="editorOptions" [(ngModel)]="selector" style="height: 100%; width: 100%;">
+          </ngx-monaco-editor>
+        </div>
+        <mat-action-row>
+          <button mat-button color="warn" (click)="prevStep()">Previous</button>
+          <button mat-button color="primary" (click)="nextStep()">Next</button>
+        </mat-action-row>
+      </mat-expansion-panel>
+      <mat-expansion-panel [expanded]="step === 2" (opened)="setStep(2)">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Template
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <app-template [(template)]="template"></app-template>
+        <mat-action-row>
+          <button mat-button color="warn" (click)="prevStep()">Previous</button>
+          <button mat-button color="primary" (click)="nextStep()">Next</button>
+        </mat-action-row>
+      </mat-expansion-panel>
+      <mat-expansion-panel [expanded]="step === 3" (opened)="setStep(3)">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Options
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        Options...
+        <mat-action-row>
+          <button mat-button color="warn" (click)="prevStep()">Previous</button>
+          <!-- <button mat-button color="primary" (click)="nextStep()">Next</button> -->
+        </mat-action-row>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </mat-drawer>
 
+  <div>
+    <button type="button" mat-button (click)="drawer.toggle()">
+      Configure
+    </button>
+    <app-output [output]="output"></app-output>
+  </div>
 
+</mat-drawer-container>
 <router-outlet></router-outlet>
