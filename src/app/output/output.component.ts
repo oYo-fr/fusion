@@ -7,10 +7,17 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class OutputComponent implements OnInit {
   @Input() output: string = "";
+  @Input() options: any = {
+    renderer: 'markdown'
+  };
+  editorOptions = { theme: 'vs-dark', language: 'csharp', automaticLayout: true };
 
   constructor() { }
 
   ngOnInit(): void {
   }
 
+  onInit(editor) {
+    editor.getPosition();
+  }
 }

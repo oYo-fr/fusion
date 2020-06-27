@@ -27,7 +27,7 @@ export class AppComponent {
 
   private _data: any;
 
-  public onData(value: any){
+  public onData(value: any) {
     this._data = value;
     this.refresh();
   }
@@ -44,10 +44,10 @@ export class AppComponent {
     this.refresh();
   }
 
-  private runSelector(data){
-    try{
+  private runSelector(data) {
+    try {
       return this._selectorFunction(data);
-    }catch(ex){
+    } catch (ex) {
       console.log(ex);
       return data;
     }
@@ -69,15 +69,18 @@ export class AppComponent {
 
   output = Handlebars.compile(this._template)(this._data);
   editorOptions = { theme: 'vs-dark', language: 'csharp' };
+  options: any = {
+    renderer: 'markdown'
+  }
 
   public constructor() {
     this.refresh();
   }
 
-  refresh(){
-    try{
+  refresh() {
+    try {
       this.output = Handlebars.compile(this._template)(this.runSelector(this._data));
-    }catch(ex){
+    } catch (ex) {
       console.log(ex);
     }
   }

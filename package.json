@@ -11,8 +11,8 @@
         "commands": [
             {
                 "command": "fusion.start",
-                "title": "Open webview",
-                "category": "Angular"
+                "title": "Start",
+                "category": "fusion"
             }
         ]
     },

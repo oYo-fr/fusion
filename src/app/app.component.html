@@ -45,7 +45,7 @@
             Options
           </mat-panel-title>
         </mat-expansion-panel-header>
-        Options...
+        <app-options [options]="options"></app-options>
         <mat-action-row>
           <button mat-button color="warn" (click)="prevStep()">Previous</button>
           <!-- <button mat-button color="primary" (click)="nextStep()">Next</button> -->
@@ -54,12 +54,10 @@
     </mat-accordion>
   </mat-drawer>
 
-  <div>
-    <button type="button" mat-button (click)="drawer.toggle()">
+    <!-- <button type="button" mat-button (click)="drawer.toggle()">
       Configure
-    </button>
-    <app-output [output]="output"></app-output>
-  </div>
+    </button> -->
+    <app-output [output]="output" [(options)]="options"></app-output>
 
 </mat-drawer-container>
 <router-outlet></router-outlet>

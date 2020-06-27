@@ -17,6 +17,10 @@ import { OptionsComponent } from './options/options.component';
 import { TemplateComponent } from './template/template.component';
 import { DataComponent } from './data/data.component';
 import { OutputComponent } from './output/output.component';
+import { MatSelectModule } from '@angular/material/select';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatTabsModule } from '@angular/material/tabs';
 
 @NgModule({
   declarations: [
@@ -34,6 +38,10 @@ import { OutputComponent } from './output/output.component';
     MatCardModule,
     MatExpansionModule,
     MatSidenavModule,
+    MatSelectModule,
+    MatInputModule,
+    MatFormFieldModule,
+    MatTabsModule,
     BrowserAnimationsModule,
     MarkdownModule.forRoot({
       sanitize: SecurityContext.NONE

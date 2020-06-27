@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-options',
@@ -6,6 +7,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./options.component.scss']
 })
 export class OptionsComponent implements OnInit {
+
+  @Input() options: any = {
+    renderer: 'html'
+  };
 
   constructor() { }
 

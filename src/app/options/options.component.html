@@ -1,1 +1,9 @@
-<p>options works!</p>
+<mat-form-field>
+  <mat-label>Renderer</mat-label>
+  <mat-select required [(value)]="options.renderer">
+    <mat-option value="html">html</mat-option>
+    <mat-option value="markdown">markdown</mat-option>
+    <mat-option value="text">text</mat-option>
+    <mat-option value="sql">sql</mat-option>
+  </mat-select>
+</mat-form-field>

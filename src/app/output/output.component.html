@@ -1,1 +1,11 @@
-<markdown emoji [data]="output" style="width: 100%; "></markdown>
+<mat-tab-group mat-align-tabs="start" style="height: 100%; width: 100%;" [selectedIndex]="0">
+  <mat-tab label="Raw">
+      <ngx-monaco-editor (onInit)="onInit($event)" [options]="editorOptions" [(ngModel)]="output" style="height: calc(100vh - 55px); width: 100%;">
+      </ngx-monaco-editor>
+  </mat-tab>
+  <mat-tab label="View" *ngIf="options.renderer === 'html' || options.renderer === 'markdown'">
+    <markdown *ngIf="options.renderer === 'markdown'" emoji [data]="output" style="width: 100%;"></markdown>
+    <div *ngIf="options.renderer === 'html'" [innerHTML]="output" style="height: 100%; width: 100%;"></div>
+  </mat-tab>
+  <button>test</button>
+</mat-tab-group>
