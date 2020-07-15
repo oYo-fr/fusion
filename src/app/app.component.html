@@ -1,7 +1,36 @@
-<mat-drawer-container autosize style="position: absolute;right: 0px;left: 0px;bottom: 0px;top: 0px;">
+<mat-drawer-container
+  autosize
+  style="position: absolute; right: 0px; left: 0px; bottom: 0px; top: 0px;"
+>
   <mat-drawer #drawer mode="side" opened style="height: 100%; width: 50%;">
     <mat-accordion style="height: 100%; width: 100%;">
       <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Toolbox
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+
+        <div
+          cdkDropList
+          class="example-list"
+          (cdkDropListDropped)="drop($event)"
+        >
+          <div class="example-box" cdkDrag>
+            SQLServer
+            <app-parse-json *cdkDragPreview></app-parse-json>
+          </div>
+          <div class="example-box" cdkDrag>
+            JSon input
+            <app-json-input *cdkDragPreview></app-json-input>
+          </div>
+        </div>
+
+        <mat-action-row>
+          <button mat-button color="primary" (click)="nextStep()">Next</button>
+        </mat-action-row>
+      </mat-expansion-panel>
+      <mat-expansion-panel [expanded]="step === 10" (opened)="setStep(10)">
         <mat-expansion-panel-header>
           <mat-panel-title>
             Data
@@ -19,7 +48,11 @@
           </mat-panel-title>
         </mat-expansion-panel-header>
         <div style="height: 500px; width: 100%;">
-          <ngx-monaco-editor [options]="editorOptions" [(ngModel)]="selector" style="height: 100%; width: 100%;">
+          <ngx-monaco-editor
+            [options]="editorOptions"
+            [(ngModel)]="selector"
+            style="height: 100%; width: 100%;"
+          >
           </ngx-monaco-editor>
         </div>
         <mat-action-row>
@@ -53,11 +86,21 @@
       </mat-expansion-panel>
     </mat-accordion>
   </mat-drawer>
-
-    <!-- <button type="button" mat-button (click)="drawer.toggle()">
+  <mat-drawer-content class="surface">
+    <button type="button" mat-button (click)="drawer.toggle()">
       Configure
-    </button> -->
-    <app-output [output]="output" [(options)]="options"></app-output>
-
+    </button>
+    <!-- <app-output [output]="output" [(options)]="options"></app-output> -->
+    <ng-container *ngFor="let component of components">
+      <app-json-input
+        *ngIf="component.type === 'json-input'"
+        style="height: 500px; width: 400px;"
+      ></app-json-input>
+      <app-json-input
+        *ngIf="component.type === 'parse-json'"
+        style="height: 500px; width: 400px;"
+      ></app-json-input>
+    </ng-container>
+  </mat-drawer-content>
 </mat-drawer-container>
 <router-outlet></router-outlet>

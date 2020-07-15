@@ -21,6 +21,9 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatTabsModule } from '@angular/material/tabs';
+import { DragDropModule } from '@angular/cdk/drag-drop';
+import { ParseJsonComponent } from './toolbox/tools/parse-json/parse-json.component';
+import { JsonInputComponent } from './toolbox/tools/json-input/json-input.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +31,9 @@ import { MatTabsModule } from '@angular/material/tabs';
     OptionsComponent,
     TemplateComponent,
     DataComponent,
-    OutputComponent
+    OutputComponent,
+    ParseJsonComponent,
+    JsonInputComponent
   ],
   imports: [
     BrowserModule,
@@ -43,6 +48,7 @@ import { MatTabsModule } from '@angular/material/tabs';
     MatFormFieldModule,
     MatTabsModule,
     BrowserAnimationsModule,
+    DragDropModule,
     MarkdownModule.forRoot({
       sanitize: SecurityContext.NONE
     }),

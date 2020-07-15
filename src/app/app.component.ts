@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import * as Handlebars from 'handlebars/dist/handlebars';
+import {CdkDragDrop, moveItemInArray} from '@angular/cdk/drag-drop';
 
 @Component({
   selector: 'app-root',
@@ -54,6 +55,11 @@ export class AppComponent {
   }
 
   step = 0;
+  components = [{
+    type:"json-input",
+    x:10,
+    y:50
+  }]
 
   public setStep(index: number) {
     this.step = index;
@@ -86,5 +92,14 @@ export class AppComponent {
   }
 
   onKey(event: any) { // without type info
+  }
+
+
+  drop(event: CdkDragDrop<{title: string, poster: string}[]>) {
+    this.components.push({
+      type:"json-input",
+      x:10,
+      y:50
+    });
   }
 }
